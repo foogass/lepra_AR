@@ -7,20 +7,23 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:lepra.db"
 
 class Post < ActiveRecord::Base
-	belongs_to :user
 	has_many :comments
 end
 
 class Comment < ActiveRecord::Base
-	belongs_to :user
 	belongs_to :post
 end
 
-class User < ActiveRecord::Base
-	has_many :posts
-	has_many :comments 
+get '/' do
+	@results = Post.order 'created_at DESC'
+	erb :index
 end
 
-get '/' do
-	erb :index
+get '/new' do
+	erb :new
+end
+
+post '/new' do
+	@post = Post.new params[:post]
+	@post.save
 end

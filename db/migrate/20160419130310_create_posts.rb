@@ -1,9 +1,8 @@
 class CreatePosts < ActiveRecord::Migration
   def change
-  	create_table :posts do |p|
-  		p.text :header
+   	create_table :posts do |p|
   		p.text :content
-  		p.belongs_to :user, index: true
+  		p.string :user
   		p.timestamps null: false
   	end
   end
