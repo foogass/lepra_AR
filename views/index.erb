@@ -1,2 +1,13 @@
 <h2>О чём пишут на лепре?</h2>
 <hr />
+<% @results.each do |post| %>
+	<p>
+		<%= post.content %>
+		<br />
+		<br />
+		<span style="font-size: 75%; color: #999">Added at <%= post.created_at %> by <b><%= post.user %></b></span>
+		<br />
+		<a href="/post/<%= post.id %>">комментарии</a>
+	</p>
+	<hr />
+<% end %>

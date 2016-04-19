@@ -27,3 +27,4 @@ post '/new' do
 	@post = Post.new params[:post]
 	@post.save
 end
+
