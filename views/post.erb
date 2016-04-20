@@ -15,3 +15,9 @@
 		<hr />
 	<% end %>
 </p>
+<form action="/post/<%= @post.id %>" method="POST" role="form">
+	<textarea name="comment[content]" class="form-control" rows="3" placeholder="ничего так не радует, как хороший комментарий..."></textarea>
+	<br />
+	<label for="username">Username:</label>
+	<input name="comment[user]"></input>
+</form>
