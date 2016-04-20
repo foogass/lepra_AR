@@ -26,10 +26,17 @@ end
 post '/new' do
 	@post = Post.new params[:post]
 	@post.save
+	redirect to '/'
 end
 
 get '/post/:id' do
 	@post = Post.find params[:id]
+	@comments = Comment.order 'created_at DESC'
 	erb :post
 end 
 
+post '/post/:id' do
+	@post = Post.find params[:id]
+	@comment = @post.Comment.new params[:comment]
+	@comment.save
+end
